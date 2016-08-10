@@ -1,8 +1,10 @@
 development: &default
-  app_url: 'http://localhost:3001'
+  app_url: 'http://lvh.me:3001'
+  session_store_domain: 'lvh.me'
 
 test:
   <<: *default
 
 production:
   app_url: 'http://gist-explorer.whoindie.com'
+  session_store_domain: 'gist-explorer.whoindie.com'
