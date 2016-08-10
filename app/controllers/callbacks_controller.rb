@@ -3,6 +3,6 @@ class CallbacksController < Devise::OmniauthCallbacksController
     @user = User.from_omniauth(request.env['omniauth.auth'])
     sign_in @user
     cookies[:gist_explorer_token] = @user.token
-    redirect_to 'http://localhost:3001'
+    redirect_to Settings::App.app_url
   end
 end

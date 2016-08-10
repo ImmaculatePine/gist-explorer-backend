@@ -1,0 +1,8 @@
+development: &default
+  app_url: 'http://localhost:3001'
+
+test:
+  <<: *default
+
+production:
+  app_url: 'http://gist-explorer.whoindie.com'
