@@ -17,3 +17,4 @@
 # Ignore credentials.
 config/secrets.yml
 config/database.yml
+config/oauth.yml

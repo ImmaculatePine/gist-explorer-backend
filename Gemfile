@@ -42,5 +42,18 @@ group :development do
   gem 'spring'
 end
 
+# Authentication
 gem 'devise'
 gem 'omniauth-github'
+
+# JSON serialization
+gem 'active_model_serializers'
+
+# Fast JSON parser and Object marshaller
+gem 'oj'
+
+# Make cross-origin AJAX possible
+gem 'rack-cors', require: 'rack/cors'
+
+# Store settings in YAML files
+gem 'settingslogic'

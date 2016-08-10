@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160731162754) do
+ActiveRecord::Schema.define(version: 20160808214727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "gist_labels", force: :cascade do |t|
+    t.string   "gist_id"
+    t.integer  "label_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "gist_labels", ["gist_id", "label_id"], name: "index_gist_labels_on_gist_id_and_label_id", unique: true, using: :btree
+  add_index "gist_labels", ["gist_id"], name: "index_gist_labels_on_gist_id", using: :btree
+  add_index "gist_labels", ["label_id"], name: "index_gist_labels_on_label_id", using: :btree
+
+  create_table "labels", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "labels", ["name"], name: "index_labels_on_name", using: :btree
+  add_index "labels", ["user_id", "name"], name: "index_labels_on_user_id_and_name", unique: true, using: :btree
+  add_index "labels", ["user_id"], name: "index_labels_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "sign_in_count",      default: 0, null: false
@@ -35,4 +57,6 @@ ActiveRecord::Schema.define(version: 20160731162754) do
   add_index "users", ["token"], name: "index_users_on_token", using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
+  add_foreign_key "gist_labels", "labels"
+  add_foreign_key "labels", "users"
 end

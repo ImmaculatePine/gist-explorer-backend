@@ -11,6 +11,7 @@ This is an API for GistExplorer application. It provides 2 things:
 
         $ cp config/database.yml.example config/database.yml
         $ cp config/secrets.yml.example config/secrets.yml
+        $ cp config/oauth.yml.example config/oauth.yml
 
 2. Install bundle
 

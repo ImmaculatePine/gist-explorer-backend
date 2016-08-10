@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
   # :recoverable, :rememberable
   devise :trackable, :omniauthable
 
- def self.from_omniauth(auth)
+  has_many :labels, dependent: :destroy
+
+  def self.from_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first_or_initialize
     user.token = auth.credentials.token
     user.save

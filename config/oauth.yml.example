@@ -1,0 +1,13 @@
+development: &default
+  github:
+    client_id: xxx
+    client_secret: yyy
+
+test:
+  <<: *default
+
+staging:
+  <<: *default
+
+production:
+  <<: *default
